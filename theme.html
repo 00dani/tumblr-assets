@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>{Title}</title>
+    <link rel="shortcut icon" href="{Favicon}">
+    <link rel="alternate" type="application/rss+xml" href="{RSS}">
+    {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+
+    <!-- default colors -->
+    <meta name="color:Comment foreground" content="#b22222" />
+    <meta name="color:Link background" content="#b4eeb4" />
+    <meta name="color:Code background" content="#fff8dc" />
+
+    {block:Pagination}
+      {block:PreviousPage}
+        <link href="{PreviousPage}" rel="prev" />
+      {/block:PreviousPage}
+      {block:NextPage}
+        <link href="{NextPage}" rel="next" />
+      {/block:NextPage}
+    {/block:Pagination}
+
+    {block:PermalinkPagination}
+      {block:PreviousPost}
+      <link href="{PreviousPost}" rel="prev" />
+      {/block:PreviousPost}
+      {block:NextPost}
+      <link href="{NextPost}" rel="next" />
+      {/block:NextPost}
+    {/block:PermalinkPagination}
+
+    <style type="text/css">
+      /* body */
+      body {
+        background-color: black;
+        /*background-image: url('http://th01.deviantart.net/fs70/200H/f/2014/004/8/5/coco_pommel_by_sanraia-d70u9iy.png');*/
+        color: #cfbfad;
+        font-family: sans-serif;
+        font-size: 10pt;
+        margin: 0;
+      }
+
+
+      /* links */
+      a:link, a:visited {
+        color: #ffcd8b;
+      }
+
+      a:link:hover, a:visited:hover {
+        background-color: {color:Link background};
+      }
+
+      a:link img, a:visited img {
+        border: none;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      .postextras {
+        float: right;
+        max-width: 30%;
+      }
+      ol.notes {
+        clear: both;
+        padding-left: 0;
+      }
+
+      .postextras,ol.notes {
+        list-style-type: none;
+        margin-bottom: 1em;
+      }
+      .postextras>li:before,ol.notes>li:before {
+        content: "# ";
+      }
+      .postextras li, ol.notes li {
+        color: {color:Comment foreground};
+        font-family: "Monaco", "Andale Mono", monospace;
+        font-size: 8pt;
+        margin-top: 0.5em;
+      }
+      .postextras li a:link, ol.notes li a:link, p.permalink a:visited {
+        color: {color:Comment foreground};
+        text-decoration: none;
+      }
+
+      .tags ul {
+        list-style-type: none;
+        display: inline;
+        padding-left: 0;
+      }
+
+      .tags ul li {
+        display: inline;
+        margin: 0;
+        padding: 0;
+      }
+      a.tag:before {
+        content: "#";
+      }
+      a.tag {
+        margin-right: 1em;
+      }
+
+      /* other elements */
+      blockquote {
+        border-left: 1.3em solid #2e2e37;
+        padding-left: 1em;
+        margin-left: 0em;
+        margin-right: 0em;
+      }
+
+      code, pre {
+        background-color: {color:Code background};
+      }
+
+
+      /* blog title */
+      h1 {
+        font-family: "Monaco", "Andale Mono", monospace;
+        font-size: 24pt;
+        margin-bottom: -10px;
+        padding-bottom: 0;
+      }
+      h1 a {
+        text-decoration: none !important;
+      }
+
+
+      .meta {
+        font-family: "Monaco", "Andale Mono", monospace;
+        list-style-type: none;
+        text-align: right;
+      }
+
+      .meta li {
+        display: inline;
+      }
+      .meta li:not(:last-child):after {
+        content: " /";
+      }
+
+
+      /* blog description (best if short) */
+      p#description:before {
+        content: '# ';
+      }
+      p#description {
+        color: {color:Comment foreground};
+        font-family: "Monaco", "Andale Mono", monospace;
+      }
+
+
+      /* post list */
+      ol#posts {
+        list-style-type: none;
+        margin: auto;
+        width: 70%;
+        border-radius: 5px;
+        padding-bottom: 2em;
+      }
+      ol#posts, footer, header {
+        background: #1e1e27;
+        background: rgba(30, 30, 39, 0.9);
+        padding-left: 2em;
+        padding-right: 2em;
+        padding-top: 1em;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+      }
+      footer {
+        margin: auto;
+        margin-top: 1em;
+        width: 100%;
+        position: absolute;
+      }
+      header {
+        margin: auto;
+        width: 100%;
+        margin-bottom: 3em;
+        padding-bottom: 0.5em;
+      }
+
+
+      /* all posts */
+      li.post {
+        clear: both;
+        line-height: 1.3em;
+        /*padding-top: 1.3em;
+        padding-bottom: 1.3em;*/
+        padding-left: 5px;
+      }
+      li.post:not(:first-child) {
+        border-top: 1.3em solid #2e2e37;
+        border-top: 1.3em solid rgba(46, 46, 55, 0.99);
+      }
+      li.post h3:before {
+        content: "# ";
+      }
+      li.post h3, li.post h3 a {
+        color: {color:Comment foreground};
+        font-family: "Monaco", "Andale Mono", monospace;
+        font-size: 12pt;
+        font-weight: normal;
+        text-decoration: none;
+      }
+
+
+      /* text posts */
+      li.text {
+      }
+
+
+      /* photo posts */
+      li.photo {
+        padding-top: 0.5em;
+      }
+
+      /* quote posts */
+      li.quote {
+      }
+      li.quote div.source:before {
+        content: 'source: ';
+      }
+      li.quote div.source {
+        margin-top: 1em;
+      }
+
+
+      /* link posts */
+      li.link {
+      }
+      li.link a.link:before {
+        content: "link: ";
+      }
+      li.link a.link {
+        text-decoration: none;
+      }
+
+
+      /* chat posts */
+      li.chat {
+        padding-top: 0.5em;
+      }
+      li.chat ul {
+        list-style-type: none;
+        margin-left: 0;
+        padding-left: 0;
+      }
+      li.chat ul li:first {
+        margin-top: 0;
+      }
+      li.chat ul li {
+        margin-top: 0.5em;
+      }
+
+      li.chat dt {
+        float: left;
+        width: 8em;
+      }
+      li.chat dd {
+        margin-left: 8.5em;
+        margin-bottom: 0.5em;
+      }
+      li.chat .label {
+        font-weight: bold;
+      }
+
+      /* video posts */
+      li.video {
+      }
+
+      li.audio {
+        padding-top: 0.5em;
+      }
+
+
+      /* footer */
+      p#footer {
+      }
+      p#attribution {
+        font-size: 8pt;
+      }
+
+      ul.twocol {
+        column-count: 2;
+        -moz-column-count: 2;
+        -webkit-column-count: 2;
+      }
+
+      {CustomCSS}
+    </style>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+          inlineMath: [[ '$','$']],
+          displayMath:  [['$$','$$']],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        },
+        "HTML-CSS": { availableFonts: ["TeX"] }
+      });
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1><a href="/">{Title}</a></h1>
+
+      <ul class="meta">
+        {block:HasPages}{block:Pages}
+          <li><a href="{URL}">{Label}</a></li>
+        {/block:Pages}{/block:HasPages}
+        {block:AskEnabled}
+          <li><a href="/ask">{AskLabel}</a></li>
+        {/block:AskEnabled}
+        {block:SubmissionsEnabled}
+          <li><a href="/submit">{SubmitLabel}</a></li>
+        {/block:SubmissionsEnabled}
+        <li><a href="{RSS}">{lang:RSS}</a></li>
+        <li><a href="/archive">{lang:Archive}</a></li>
+      </ul>
+
+      {block:Description}
+      <p id="description">{Description}</p>
+      {/block:Description}
+    </header>
+
+    <ol id="posts">
+      {block:Posts}
+      <li class="post
+        {block:Text}text{/block:Text}
+        {block:Photo}photo{/block:Photo}
+        {block:Quote}quote{/block:Quote}
+        {block:Link}link{/block:Link}
+        {block:Chat}chat{/block:Chat}
+        {block:Video}video{/block:Video}
+        {block:Audio}audio{/block:Audio}
+        ">
+
+        <ul class="postextras">
+          {block:HasTags}
+          <li class="tags">
+            tags = <ul>{block:Tags}
+              <li><a href="{TagURL}" class="tag">{Tag}</a></li>
+            {/block:Tags}</ul>
+          </li>
+          {/block:HasTags}
+
+          {block:ContentSource}
+          <li class="source">
+            source = <a href="{SourceURL}">{SourceTitle}</a>
+          </li>
+          {/block:ContentSource}
+
+          {block:NoteCount}
+            <li class="notes">notes = {NoteCount}</li>
+          {/block:NoteCount}
+
+          {block:Date}
+            <li class="date">
+              date = {Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} {24HourWithZero}:{Minutes}:{Seconds}
+            </li>
+            <li class="ago">
+              ago = {TimeAgo}
+            </li>
+          {/block:Date}
+
+          <li class="permalink"><a href="{Permalink}">permalink</a></li>
+
+        </ul>
+
+        {block:Text}
+          {block:Title}
+            <h3><a href="{Permalink}">{Title}</a></h3>
+          {/block:Title}
+          {Body}
+        {/block:Text}
+
+        {block:Photo}
+          {LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}"/>{LinkCloseTag}
+          {block:Caption}
+            <div class="caption">{Caption}</div>
+          {/block:Caption}
+        {/block:Photo}
+
+        {block:Quote}
+          <blockquote>{Quote}</blockquote>
+          {block:Source}
+            <div class="source">{Source}</div>
+          {/block:Source}
+        {/block:Quote}
+
+        {block:Link}
+          <h3><a href="{URL}" class="link" {Target}>{Name}</a></h3>
+          {block:Description}
+            <div class="description">{Description}</div>
+          {/block:Description}
+        {/block:Link}
+
+        {block:Chat}
+          {block:Title}
+            <h3><a href="{Permalink}">{Title}</a></h3>
+          {/block:Title}
+
+          <dl class="chat">
+            {block:Lines}
+              {block:Label}
+                <dt class="label {Alt} user_{UserNumber}">{Label}</dt>
+              {/block:Label}
+            <dd class="{Alt} user_{UserNumber}">
+              {Line}
+            </dd>
+            {/block:Lines}
+          </dl>
+        {/block:Chat}
+
+        {block:Video}
+          {Video-400}
+          {block:Caption}
+            <div class="caption">{Caption}</div>
+          {/block:Caption}
+        {/block:Video}
+
+        {block:Audio}
+          {AudioPlayerBlack}
+          {block:Caption}
+            <div class="caption">{Caption}</div>
+          {/block:Caption}
+        {/block:Audio}
+
+
+        {PostNotes}
+      </li>
+
+      {/block:Posts}
+
+    </ol>
+
+
+    <footer>
+      <ul class="meta">
+        {block:Pagination}
+          {block:PreviousPage}
+            <li><a href="{PreviousPage}">&lt;- Previous</a></li>
+          {/block:PreviousPage}
+        {/block:Pagination}
+        {block:PermalinkPagination}
+          {block:PreviousPost}
+            <li><a href="{PreviousPost}">&lt;- Previous</a></li>
+          {/block:PreviousPost}
+        {/block:PermalinkPagination}
+
+        <li><a href="/archive">Archive</a></li>
+
+        {block:Pagination}
+          {block:NextPage}
+            <li><a href="{NextPage}">Next -&gt;</a></li>
+          {/block:NextPage}
+        {/block:Pagination}
+        {block:PermalinkPagination}
+          {block:NextPost}
+            <li><a href="{NextPost}">Next -&gt;</a></li>
+          {/block:NextPost}
+        {/block:PermalinkPagination}
+      </ul>
+
+      <p id="attribution">
+        Powered by <a href="http://tumblr.com/">Tumblr</a>; based off a theme by <a href="http://calcandcoffee.tumblr.com/">Adam Lloyd</a> with heavy modifications.
+      </p>
+    </footer>
+  </body>
+</html>

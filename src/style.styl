@@ -123,31 +123,36 @@ header
   margin-bottom 3em
   padding-bottom 0.5em
 
-li
-  &.post
-    clear both
-    line-height 1.3em
-    padding-left 5px
-    &:not(:first-child)
-      border-top 1.3em solid #2e2e37
-      border-top 1.3em solid rgba(46, 46, 55, 0.99)
-    h3
-      with-hash()
-  &.text
+li.post
+  clear both
+  line-height 1.3em
+  padding-left 5px
+
+  h3
+    with-hash()
+    &, a
+      color comment_foreground
+      font-family "Monaco", "Andale Mono", monospace
+      font-size 12pt
+      font-weight normal
+      text-decoration none
+
+  &:not(:first-child)
+    border-top 1.3em solid #2e2e37
+    border-top 1.3em solid rgba(46, 46, 55, 0.99)
+
   &.photo
     padding-top 0.5em
   &.quote
-    div
-      &.source
+    div.source
         margin-top 1em
         &:before
           content 'source: '
   &.link
-    a
-      &.link
-        text-decoration none
-        &:before
-          content "link: "
+    a.link
+      text-decoration none
+      &:before
+        content "link: "
   &.chat
     padding-top 0.5em
     ul
@@ -166,18 +171,8 @@ li
       margin-bottom 0.5em
     .label
       font-weight bold
-  &.video
   &.audio
     padding-top 0.5em
-
-li.post h3, li.post h3 a
-  color comment_foreground
-  font-family "Monaco", "Andale Mono", monospace
-  font-size 12pt
-  font-weight normal
-  text-decoration none
-
-p#footer
 
 p#attribution
   font-size 8pt

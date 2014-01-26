@@ -5,11 +5,12 @@ module.exports = (grunt) ->
 
   grunt.initConfig
     stylus: style:
-      src: ['style.styl']
+      src: ['src/style.styl']
       dest: 'dist/style.css'
     includes: theme:
-      src: ['theme.html']
+      src: ['src/theme.html']
       dest: 'dist/theme.html'
+      options: includePath: 'dist'
     clean: theme:
       src: ['dist']
 

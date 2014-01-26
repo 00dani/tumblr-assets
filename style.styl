@@ -1,0 +1,186 @@
+link_background = #404040
+comment_foreground = #CD8B00
+code_background = #1E1E27
+
+column-count(n)
+  column-count n
+  -moz-column-count n
+  -webkit-column-count n
+
+with-hash()
+  &:before
+    content "# "
+
+body
+  background-color black
+  color #cfbfad
+  font-family sans-serif
+  font-size 10pt
+  margin 0
+
+a
+  color #ffcd8b
+  &:hover
+    background-color link_background
+  img
+    border none
+img
+  max-width 100%
+
+.postextras
+  float right
+  max-width 30%
+
+ol.notes
+  clear both
+  padding-left 0
+
+.postextras, ol.notes
+  list-style-type none
+  margin-bottom 1em
+  > li
+    with-hash()
+    color comment_foreground
+    font-family "Monaco", "Andale Mono", monospace
+    font-size 8pt
+    margin-top 0.5em
+    a
+      color comment_foreground
+      text-decoration none
+
+p.permalink a
+  @extends ol.notes > li a
+
+.tags ul
+  list-style-type none
+  display inline
+  padding-left 0
+  li
+    display inline
+    margin 0
+    padding 0
+
+a.tag
+  with-hash()
+  margin-right 1em
+
+blockquote
+  border-left 1.3em solid #2e2e37
+  padding-left 1em
+  margin-left 0em
+  margin-right 0em
+
+code, pre
+  background-color code_background
+
+h1
+  font-family "Monaco", "Andale Mono", monospace
+  font-size 24pt
+  margin-bottom -10px
+  padding-bottom 0
+  a
+    text-decoration none !important
+
+.meta
+  font-family "Monaco", "Andale Mono", monospace
+  list-style-type none
+  text-align right
+  li
+    display inline
+    &:not(:last-child)
+      content " /"
+
+p#description
+  with-hash()
+  color comment_foreground
+  font-family "Monaco", "Andale Mono", monospace
+
+ol#posts
+  list-style-type none
+  margin auto
+  width 70%
+  border-radius 5px
+  padding-bottom 2em
+
+ol#posts, footer, header
+  background #1e1e27
+  background rgba(30, 30, 39, 0.9)
+  padding-left 2em
+  padding-right 2em
+  padding-top 1em
+  box-sizing border-box
+  -moz-box-sizing border-box
+
+footer
+  margin auto
+  margin-top 1em
+  width 100%
+  position absolute
+
+header
+  margin auto
+  width 100%
+  margin-bottom 3em
+  padding-bottom 0.5em
+
+li
+  &.post
+    clear both
+    line-height 1.3em
+    padding-left 5px
+    &:not(:first-child)
+      border-top 1.3em solid #2e2e37
+      border-top 1.3em solid rgba(46, 46, 55, 0.99)
+    h3
+      with-hash()
+  &.text
+  &.photo
+    padding-top 0.5em
+  &.quote
+    div
+      &.source
+        margin-top 1em
+        &:before
+          content 'source: '
+  &.link
+    a
+      &.link
+        text-decoration none
+        &:before
+          content "link: "
+  &.chat
+    padding-top 0.5em
+    ul
+      list-style-type none
+      margin-left 0
+      padding-left 0
+      li
+        margin-top 0.5em
+        &:first
+          margin-top 0
+    dt
+      float left
+      width 8em
+    dd
+      margin-left 8.5em
+      margin-bottom 0.5em
+    .label
+      font-weight bold
+  &.video
+  &.audio
+    padding-top 0.5em
+
+li.post h3, li.post h3 a
+  color comment_foreground
+  font-family "Monaco", "Andale Mono", monospace
+  font-size 12pt
+  font-weight normal
+  text-decoration none
+
+p#footer
+
+p#attribution
+  font-size 8pt
+
+ul.twocol
+  column-count 2

@@ -43,6 +43,7 @@
       });
     </script>
   </head>
+
   <body>
     <header>
       <h1><a href="/">{Title}</a></h1>
@@ -62,7 +63,7 @@
       </ul>
 
       {block:Description}
-      <p id="description">{Description}</p>
+        <p id="description">{Description}</p>
       {/block:Description}
     </header>
 
@@ -107,7 +108,6 @@
           {/block:Date}
 
           <li class="permalink"><a href="{Permalink}">permalink</a></li>
-
         </ul>
 
         {block:Text}
@@ -169,14 +169,10 @@
           {/block:Caption}
         {/block:Audio}
 
-
         {PostNotes}
       </li>
-
       {/block:Posts}
-
     </ol>
-
 
     <footer>
       <ul class="meta">

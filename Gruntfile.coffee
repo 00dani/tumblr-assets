@@ -15,3 +15,4 @@ module.exports = (grunt) ->
       src: ['dist']
 
   grunt.registerTask 'theme', ['stylus:style', 'includes:theme']
+  grunt.registerTask 'default', ['theme']

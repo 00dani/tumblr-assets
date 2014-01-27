@@ -8,6 +8,9 @@ prefix(str)
   &:before
     content str
 
+*
+  box-sizing border-box
+
 body
   background-color black
   color #cfbfad
@@ -25,6 +28,7 @@ main
   display flex
   flex-direction column
   justify-content center
+  margin 2em auto
 
 a
   color #ffcd8b
@@ -106,7 +110,6 @@ p#description
 
 ol#posts
   list-style-type none
-  margin 1em auto
   border-radius 5px
   padding-bottom 2em
   width 100%
@@ -117,7 +120,6 @@ ol#posts, footer, header
   padding-left 2em
   padding-right 2em
   padding-top 1em
-  box-sizing border-box
 
 header, footer
   width 100%

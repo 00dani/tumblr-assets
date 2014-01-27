@@ -4,9 +4,9 @@ link_background = #404040
 comment_foreground = #CD8B00
 code_background = #1E1E27
 
-with-hash()
+prefix(str)
   &:before
-    content "# "
+    content str
 
 body
   background-color black
@@ -47,7 +47,7 @@ ol.notes
   list-style-type none
   margin-bottom 1em
   > li
-    with-hash()
+    prefix "# "
     color comment_foreground
     font-family "Monaco", "Andale Mono", monospace
     font-size 8pt
@@ -69,7 +69,7 @@ p.permalink a
     padding 0
 
 a.tag
-  with-hash()
+  prefix "#"
   margin-right 1em
 
 blockquote
@@ -96,11 +96,11 @@ h1
   text-align right
   li
     display inline
-    &:not(:last-child):after
-      content " /"
+    &:not(:first-child)
+      prefix " / "
 
 p#description
-  with-hash()
+  prefix "# "
   color comment_foreground
   font-family "Monaco", "Andale Mono", monospace
 
@@ -133,7 +133,7 @@ li.post
   padding-left 5px
 
   h3
-    with-hash()
+    prefix "# "
     &, a
       color comment_foreground
       font-family "Monaco", "Andale Mono", monospace

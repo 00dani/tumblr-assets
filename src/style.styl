@@ -39,12 +39,7 @@ a
 img
   max-width 100%
 
-.postextras
-  float right
-  max-width 30%
-
 ol.notes
-  clear both
   padding-left 0
 
 .postextras, ol.notes
@@ -130,9 +125,15 @@ header
   padding-bottom 0.5em
 
 li.post
-  clear both
+  display flex
   line-height 1.3em
   padding-left 5px
+
+  .content
+    flex 1
+  .postextras
+    max-width 30%
+    order 2
 
   h3
     prefix "# "

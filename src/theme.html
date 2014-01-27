@@ -79,37 +79,6 @@
         {block:Audio}audio{/block:Audio}
         ">
 
-        <ul class="postextras">
-          {block:HasTags}
-          <li class="tags">
-            tags = <ul>{block:Tags}
-              <li><a href="{TagURL}" class="tag">{Tag}</a></li>
-            {/block:Tags}</ul>
-          </li>
-          {/block:HasTags}
-
-          {block:ContentSource}
-          <li class="source">
-            source = <a href="{SourceURL}">{SourceTitle}</a>
-          </li>
-          {/block:ContentSource}
-
-          {block:NoteCount}
-            <li class="notes">notes = {NoteCount}</li>
-          {/block:NoteCount}
-
-          {block:Date}
-            <li class="date">
-              date = {Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} {24HourWithZero}:{Minutes}:{Seconds}
-            </li>
-            <li class="ago">
-              ago = {TimeAgo}
-            </li>
-          {/block:Date}
-
-          <li class="permalink"><a href="{Permalink}">permalink</a></li>
-        </ul>
-
         <article class="content">
         {block:Text}
           {block:Title}
@@ -172,6 +141,37 @@
 
         {PostNotes}
         </article>
+
+        <ul class="postextras">
+          {block:HasTags}
+          <li class="tags">
+            tags = <ul>{block:Tags}
+              <li><a href="{TagURL}" class="tag">{Tag}</a></li>
+            {/block:Tags}</ul>
+          </li>
+          {/block:HasTags}
+
+          {block:ContentSource}
+          <li class="source">
+            source = <a href="{SourceURL}">{SourceTitle}</a>
+          </li>
+          {/block:ContentSource}
+
+          {block:NoteCount}
+            <li class="notes">notes = {NoteCount}</li>
+          {/block:NoteCount}
+
+          {block:Date}
+            <li class="date">
+              date = {Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} {24HourWithZero}:{Minutes}:{Seconds}
+            </li>
+            <li class="ago">
+              ago = {TimeAgo}
+            </li>
+          {/block:Date}
+
+          <li class="permalink"><a href="{Permalink}">permalink</a></li>
+        </ul>
       </li>
       {/block:Posts}
     </ol></main>

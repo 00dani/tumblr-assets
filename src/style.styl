@@ -6,14 +6,16 @@ page_fg = #CFBFAD
 content_bg = #1E1E27
 link_bg = #404040
 link_fg = #FFCD8B
+
 cursorline_bg = #2E2E37
+cursorline_thickness = 1.3em
 
 meta_fg = #CD8B00
 meta_font = "Monaco", "Andale Mono", monospace
 
 cursorline(side)
-  border-{side} 1.3em solid cursorline_bg
-  border-{side} 1.3em solid rgba(cursorline_bg, 0.99)
+  border-{side} cursorline_thickness solid cursorline_bg
+  border-{side} cursorline_thickness solid rgba(cursorline_bg, 0.99)
 
 prefix(str)
   &:before
@@ -116,18 +118,18 @@ p#description
 ol#posts
   list-style-type none
   border-radius 5px
-  padding-bottom 2em
+  padding-left 0
   width 100%
 
 ol#posts, footer, header
   background content_bg
   background rgba(30, 30, 39, 0.9)
-  padding-left 2em
-  padding-right 2em
   padding-top 1em
 
 header, footer
   width 100%
+  padding-left 2em
+  padding-right 2em
 main
   width 70%
 
@@ -137,13 +139,13 @@ header
 li.post
   display flex
   line-height 1.3em
-  padding-left 5px
-  margin-bottom 1em
+  padding 0em 2em (2em - cursorline_thickness) 2em
 
   .content
     flex 1
   .postextras
     max-width 30%
+    padding-left 1px
 
   h3
     prefix "# "
@@ -155,10 +157,9 @@ li.post
       text-decoration none
 
   &:not(:first-child)
+    padding-top cursorline_thickness
     cursorline top
 
-  &.photo
-    padding-top 0.5em
   &.quote
     div.source
         margin-top 1em

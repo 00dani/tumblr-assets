@@ -36,12 +36,34 @@ body
   flex-direction column
   align-items center
 
+$box
+  width 100%
+  padding-left 2em
+  padding-right 2em
+  background content_bg
+  background rgba(content_bg, 0.9)
+
+header
+  @extends $box
+  padding-bottom 0.5em
+
 main
+  margin 2em auto
+  width 70%
   flex 1
   display flex
   flex-direction column
   justify-content center
-  margin 2em auto
+
+  ol#posts
+    @extends $box
+    padding 1em 0 0 0
+
+    list-style-type none
+    border-radius 5px
+
+footer
+  @extends $box
 
 a
   color link_fg
@@ -52,10 +74,7 @@ a
 img
   max-width 100%
 
-ol.notes
-  padding-left 0
-
-.postextras, ol.notes
+$meta_list
   list-style-type none
   > li
     prefix "# "
@@ -66,9 +85,6 @@ ol.notes
     a
       color meta_fg
       text-decoration none
-
-p.permalink a
-  @extends ol.notes > li a
 
 .tags ul
   list-style-type none
@@ -115,27 +131,6 @@ p#description
   color meta_fg
   font-family meta_font
 
-ol#posts
-  list-style-type none
-  border-radius 5px
-  padding-left 0
-  width 100%
-
-ol#posts, footer, header
-  background content_bg
-  background rgba(30, 30, 39, 0.9)
-  padding-top 1em
-
-header, footer
-  width 100%
-  padding-left 2em
-  padding-right 2em
-main
-  width 70%
-
-header
-  padding-bottom 0.5em
-
 li.post
   display flex
   line-height 1.3em
@@ -143,7 +138,11 @@ li.post
 
   .content
     flex 1
+    ol.notes
+      @extends $meta_list
+      padding-left 0
   .postextras
+    @extends $meta_list
     max-width 30%
     padding-left 1px
 

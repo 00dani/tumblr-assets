@@ -157,6 +157,12 @@
           </li>
           {/block:ContentSource}
 
+          {block:RebloggedFrom}
+          <li class="from">
+            from = <a href="{ReblogParentURL}">{ReblogParentName}</a>
+          </li>
+          {/block:RebloggedFrom}
+
           {block:NoteCount}
             <li class="notes">notes = {NoteCount}</li>
           {/block:NoteCount}

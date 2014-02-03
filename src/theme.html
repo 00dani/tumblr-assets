@@ -139,7 +139,9 @@
           {/block:Caption}
         {/block:Audio}
 
-        {PostNotes}
+        {block:PostNotes}<aside id="notes">
+          {PostNotes}
+        </aside>{/block:PostNotes}
         </article>
 
         <ul class="postextras">
@@ -164,7 +166,9 @@
           {/block:RebloggedFrom}
 
           {block:NoteCount}
-            <li class="notes">notes = {NoteCount}</li>
+          <li class="notes">
+            notes = <a href="{Permalink}#notes">{NoteCount}</a>
+          </li>
           {/block:NoteCount}
 
           {block:Date}

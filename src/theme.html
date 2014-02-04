@@ -78,6 +78,7 @@
         {block:Chat}chat{/block:Chat}
         {block:Video}video{/block:Video}
         {block:Audio}audio{/block:Audio}
+        {block:Answer}answer{/block:Answer}
         ">
 
         <article class="content">
@@ -139,6 +140,14 @@
             <div class="caption">{Caption}</div>
           {/block:Caption}
         {/block:Audio}
+
+        {block:Answer}
+          <blockquote class="question">
+            <h1>{Question}</h1>
+            <figure><figcaption>{Asker}</figcaption> <img src="{AskerPortraitURL-64}" alt="{Asker}" /></figure>
+          </blockquote>
+          {Answer}
+        {/block:Answer}
 
         {block:PostNotes}<aside id="notes">
           {PostNotes}

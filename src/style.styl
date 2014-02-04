@@ -11,7 +11,7 @@ cursorline_bg = rgba(#2E2E37, 0.99)
 cursorline_thickness = 1.3em
 
 meta_fg = #CD8B00
-meta_font = "Monaco", "Andale Mono", monospace
+meta_font = "Inconsolata", "Monaco", "Anonymous Pro", "Andale Mono", monospace
 
 cursorline(side)
   border-{side} cursorline_thickness solid cursorline_bg
@@ -59,6 +59,10 @@ $box
 header
   @extends $box
   padding-bottom 0.5em
+  > div
+    display flex
+    p#description
+      flex 1
 
 main
   margin 2em auto
@@ -77,6 +81,11 @@ main
 
 footer
   @extends $box
+  display flex
+  p#attribution
+    font-size 8pt
+    flex 1
+
 
 a
   color link_fg
@@ -120,6 +129,7 @@ blockquote
 
 code, pre
   background-color content_bg
+  white-space pre-wrap
 
 h1
   font-family meta_font
@@ -132,7 +142,8 @@ h1
 .meta
   font-family meta_font
   list-style-type none
-  float right
+  padding 0
+  margin-left 0.5em
   text-align right
   li
     display inline
@@ -220,6 +231,7 @@ li.post
         padding 1em
         position relative
         arrow 15px, cursorline_bg
+        flex 1
 
       figure
         margin 0
@@ -230,13 +242,10 @@ li.post
         img
           padding 5px
 
-p#attribution
-  font-size 8pt
-
 ul.twocol
   column-count 2
 
-@media (max-width: 768px)
+@media (max-width: 48em)
   main
     width 100%
     padding 0 1em
@@ -245,3 +254,9 @@ ul.twocol
     .postextras
       max-width 100%
       margin 0
+
+@media (max-width: 35em)
+  header
+    padding-top 1em
+    > div
+      flex-direction column

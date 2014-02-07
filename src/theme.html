@@ -29,8 +29,10 @@
     {/block:PermalinkPagination}
 
     <style type="text/css">
-      include "style.css"
+      include "dist/style.css"
+      include "node_modules/Extended-Tumblr-Photoset/css/style.css"
     </style>
+
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
@@ -77,6 +79,7 @@
       <li class="post
         {block:Text}text{/block:Text}
         {block:Photo}photo{/block:Photo}
+        {block:Photoset}photoset{/block:Photoset}
         {block:Quote}quote{/block:Quote}
         {block:Link}link{/block:Link}
         {block:Chat}chat{/block:Chat}
@@ -99,6 +102,32 @@
             <div class="caption">{Caption}</div>
           {/block:Caption}
         {/block:Photo}
+
+
+        {block:Photoset}
+
+          <div class="photo-slideshow" id="photoset_{PostID}" data-layout="{PhotosetLayout}">
+
+            {block:Photos}
+            <div class="photo-data">
+              <div class="pxu-photo">
+                <img alt="{PhotoAlt}" src="{PhotoURL-500}" width="{PhotoWidth-500}" height="{PhotoHeight-500}" data-highres="{PhotoURL-HighRes}" data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}" class="{block:Exif}exif-yes {/block:Exif}{block:Caption}caption-yes{/block:Caption}" {block:Exif}data-camera="{block:Camera}{Camera}{/block:Camera}" data-iso="{block:ISO}{ISO}{/block:ISO}" data-aperture="{block:Aperture}{Aperture}{/block:Aperture}" data-exposure="{block:Exposure}{Exposure}{/block:Exposure}" data-focal="{block:FocalLength}{FocalLength}{/block:FocalLength}"{/block:Exif} {block:Caption}data-caption="{Caption}"{/block:Caption}>
+              </div>
+              <div class="icons">
+                <a class="tumblr-box" rel="post-{PostID}" href="{PhotoURL-HighRes}">
+                  <span class="zoom">Zoom</span>
+                </a>
+                <span class="info">Info</span>
+              </div>
+            </div>
+            {/block:Photos}
+
+          </div><!-- close SLIDESHOW -->
+
+          {block:Caption}
+            <div class="caption">{Caption}</div>
+          {/block:Caption}
+        {/block:Photoset}
 
         {block:Quote}
           <blockquote>{Quote}</blockquote>
@@ -231,5 +260,13 @@
         {/block:PermalinkPagination}
       </ul>
     </footer>
+
+    <script type="text/javascript">
+      include "node_modules/Extended-Tumblr-Photoset/node_modules/jquery/dist/jquery.js"
+      include "node_modules/Extended-Tumblr-Photoset/js/pxuPhotoset.js"
+      $(document).ready(function() {
+        $('.photo-slideshow').pxuPhotoset({});
+      });
+    </script>
   </body>
 </html>

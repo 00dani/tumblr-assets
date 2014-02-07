@@ -10,7 +10,7 @@ module.exports = (grunt) ->
     includes: theme:
       src: ['src/theme.html']
       dest: 'dist/theme.html'
-      options: includePath: 'dist'
+      options: includePath: '.'
     clean: theme:
       src: ['dist']
 

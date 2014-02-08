@@ -270,12 +270,12 @@
       include "node_modules/Extended-Tumblr-Photoset/js/pxuPhotoset.js"
       $(document).ready(function() {
         var ps = $('li.photoset');
-        ps.find('.html_photoset')
-          .remove();
         ps.find('.photo-slideshow')
-          .css({display: 'block'})
           .pxuPhotoset({
             rounded: false
+          }, function() {
+            $(this).css({display: 'block'});
+            ps.find('.html_photoset').remove();
           });
       });
     </script>

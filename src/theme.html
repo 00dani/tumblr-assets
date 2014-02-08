@@ -31,6 +31,10 @@
     <style type="text/css">
       include "dist/style.css"
       include "node_modules/Extended-Tumblr-Photoset/css/style.css"
+      .photo-slideshow {
+        visibility: visible;
+        display: none;
+      }
     </style>
 
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -105,7 +109,7 @@
 
 
         {block:Photoset}
-
+          {Photoset-500}
           <div class="photo-slideshow" id="photoset_{PostID}" data-layout="{PhotosetLayout}">
 
             {block:Photos}
@@ -265,7 +269,12 @@
       include "node_modules/Extended-Tumblr-Photoset/node_modules/jquery/dist/jquery.js"
       include "node_modules/Extended-Tumblr-Photoset/js/pxuPhotoset.js"
       $(document).ready(function() {
-        $('.photo-slideshow').pxuPhotoset({});
+        var ps = $('li.photoset');
+        ps.find('.html_photoset')
+          .remove();
+        ps.find('.photo-slideshow')
+          .css({display: 'block'})
+          .pxuPhotoset();
       });
     </script>
   </body>

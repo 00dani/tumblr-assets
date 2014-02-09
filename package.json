@@ -6,6 +6,8 @@
     "grunt-contrib-clean": "~0.5.0",
     "Extended-Tumblr-Photoset": "git+https://github.com/00Davo/Extended-Tumblr-Photoset.git#package.json",
     "compilist": "http://gigahard.mine.nu/hg/compilist/archive/tip.tar.gz",
-    "jquery": "~2.1.0"
+    "jquery": "~2.1.0",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-watch": "~0.5.3"
   }
 }

@@ -127,6 +127,16 @@ blockquote
   padding-left 1em
   margin-left 0em
   margin-right 0em
+  &.long, &.long blockquote
+    border-left-width 0.5em
+  &.peep_0
+    border-left-color lighten(cursorline_bg, 20%)
+  &.peep_1
+    border-left-color darken(cursorline_bg, 20%)
+  &.peep_2
+    border-left-color lighten(cursorline_bg, 40%)
+  &.peep_3
+    border-left-color darken(cursorline_bg, 40%)
 
 code, pre
   background-color content_bg

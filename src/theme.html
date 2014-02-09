@@ -28,9 +28,9 @@
       {/block:NextPost}
     {/block:PermalinkPagination}
 
+    <script type="text/javascript" src="http://static.tumblr.com/gcsanxp/iHUn0qcjv/app.js"></script>
     <style type="text/css">
       include "dist/style.css"
-      include "node_modules/Extended-Tumblr-Photoset/css/style.css"
       .photo-slideshow {
         visibility: visible;
         display: none;
@@ -264,20 +264,5 @@
         {/block:PermalinkPagination}
       </ul>
     </footer>
-
-    <script type="text/javascript">
-      include "node_modules/Extended-Tumblr-Photoset/node_modules/jquery/dist/jquery.js"
-      include "node_modules/Extended-Tumblr-Photoset/js/pxuPhotoset.js"
-      $(document).ready(function() {
-        var ps = $('li.photoset');
-        ps.find('.photo-slideshow')
-          .pxuPhotoset({
-            rounded: false
-          }, function() {
-            $(this).css({display: 'block'});
-            ps.find('.html_photoset').remove();
-          });
-      });
-    </script>
   </body>
 </html>

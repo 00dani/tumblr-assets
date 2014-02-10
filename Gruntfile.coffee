@@ -28,13 +28,20 @@ module.exports = (grunt) ->
     clean: theme:
       src: ['dist', 'distgz']
 
-    contrib_watch: dist:
-      files: ['dist/*']
-      tasks: 'copy'
+    contrib_watch:
+      theme:
+        files: ['src/theme.html']
+        tasks: 'includes:theme'
+      style:
+        files: ['src/style.styl']
+        tasks: 'stylus:style'
+      dist:
+        files: ['dist/*']
+        tasks: 'copy'
 
   grunt.registerTask 'theme', ['stylus:style', 'includes:theme']
 
-  grunt.registerTask 'watch', ['theme', 'compilist:app', 'contrib_watch:dist']
+  grunt.registerTask 'watch', ['compilist:app', 'contrib_watch']
   grunt.registerTask 'publish', ['theme', 'compilist:app', 'copy']
 
   grunt.registerTask 'default', ['theme']

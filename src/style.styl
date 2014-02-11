@@ -55,7 +55,7 @@ $box
   background content_bg
   background rgba(content_bg, 0.9)
 
-header
+body > header
   @extends $box
   padding-bottom 0.5em
   > div
@@ -63,7 +63,7 @@ header
     p#description
       flex 1
 
-main
+body > main
   margin 2em auto
   width 70%
   flex 1
@@ -78,7 +78,7 @@ main
     list-style-type none
     border-radius 5px
 
-footer
+body > footer
   @extends $box
   display flex
   align-items center
@@ -166,6 +166,8 @@ p#description
   color meta_fg
   font-family meta_font
 
+$headline
+
 li.post
   display flex
   line-height 1.3em
@@ -203,11 +205,7 @@ li.post
     a.photo:hover
       background transparent
 
-  &.quote
-    div.source
-        margin-top 1em
-        &:before
-          content 'source: '
+
   &.link
     a.link
       text-decoration none
@@ -233,33 +231,47 @@ li.post
       font-weight bold
   &.audio
     padding-top 0.5em
-  &.answer
-    blockquote.question
-      display flex
-      flex-direction row
-      align-items center
-      border none
+
+  &.quote blockquote.quote
+  &.answer blockquote.question
+    display flex
+    border none
+    margin 0
+    padding 0
+
+    h1
+      border-radius 5px
+      background-color cursorline_bg
+      font-size 1.2em
       margin 0
-      padding 0
+      padding 1em
+      position relative
 
-      h1
-        border-radius 5px
-        background-color cursorline_bg
-        font-size 1.2em
-        margin 0
-        padding 1em
-        position relative
-        arrow 15px, cursorline_bg
-        flex 1
+  &.quote blockquote.quote
+    flex-direction column
+    align-items flex-end
+    h1
+      margin-bottom 1em
+    cite
+      &:before
+        content " – "
 
-      figure
+  &.answer blockquote.question
+    flex-direction row
+    align-items center
+    h1
+      flex 1
+      arrow 15px, cursorline_bg
+    footer
+      margin 0
+      display flex
+      flex-direction column-reverse
+      align-items center
+      justify-content center
+      img
+        padding 5px
+      p
         margin 0
-        display flex
-        flex-direction column-reverse
-        align-items center
-        justify-content center
-        img
-          padding 5px
 
 ul.twocol
   column-count 2

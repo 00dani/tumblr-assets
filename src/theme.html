@@ -136,10 +136,12 @@
         {/block:Photoset}
 
         {block:Quote}
-          <blockquote>{Quote}</blockquote>
-          {block:Source}
-            <div class="source">{Source}</div>
-          {/block:Source}
+          <blockquote class="quote">
+            <h1>{Quote}</h1>
+            {block:Source}
+              <cite>{Source}</cite>
+            {/block:Source}
+          </blockquote>
         {/block:Quote}
 
         {block:Link}
@@ -183,7 +185,7 @@
         {block:Answer}
           <blockquote class="question">
             <h1>{Question}</h1>
-            <figure><figcaption>{Asker}</figcaption> <img src="{AskerPortraitURL-64}" alt="The question asker's avatar" /></figure>
+            <footer><p>{Asker}</p> <img src="{AskerPortraitURL-64}" alt="The question asker's avatar" /></footer>
           </blockquote>
           {Answer}
         {/block:Answer}

@@ -154,8 +154,8 @@ h1
   font-family meta_font
   list-style-type none
   padding 0
-  margin-left 0.5em
-  text-align right
+  margin 0
+  align-self center
   li
     display inline
     &:not(:first-child)
@@ -165,8 +165,6 @@ p#description
   prefix "# "
   color meta_fg
   font-family meta_font
-
-$headline
 
 li.post
   display flex
@@ -289,5 +287,6 @@ ul.twocol
 @media (max-width: 35em)
   body > header
     padding-top 1em
+    padding-bottom 1.5em
     > div
       flex-direction column

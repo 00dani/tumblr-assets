@@ -10,6 +10,8 @@ link_fg = #FFCD8B
 cursorline_bg = rgba(#2E2E37, 0.99)
 cursorline_thickness = 1.3em
 
+breakpoints = 48em 35em
+
 meta_fg = #CD8B00
 meta_font = "Inconsolata", "Monaco", "Anonymous Pro", "Andale Mono", monospace
 
@@ -33,6 +35,11 @@ arrow(arrow-width = 10px, arrow-colour)
     border arrow-width solid transparent
     margin-top (- arrow-width)
     border-left-color arrow-colour
+
+when(size)
+  condition = unquote("(max-width: %s)" % size)
+  @media condition
+    {block}
 
 *
   box-sizing border-box
@@ -66,6 +73,7 @@ body > header
 body > main
   margin 2em auto
   width 70%
+  min-width breakpoints[0]
   flex 1
   display flex
   flex-direction column
@@ -277,9 +285,10 @@ li.post
 ul.twocol
   column-count 2
 
-@media (max-width: 48em)
++when(breakpoints[0])
   body > main
     width 100%
+    min-width initial
     padding 0 1em
   li.post
     flex-direction column
@@ -287,7 +296,7 @@ ul.twocol
       max-width 100%
       margin 0
 
-@media (max-width: 35em)
++when(breakpoints[1])
   body > header
     padding-top 1em
     padding-bottom 1.5em

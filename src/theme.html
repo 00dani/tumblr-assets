@@ -141,14 +141,16 @@
           {block:Title}
             <h3><a href="{Permalink}">{Title}</a></h3>
           {/block:Title}
-          <dl class="chat">
+          <ol class="chat">
             {block:Lines}
+            <li>
               {block:Label}
-                <dt class="label {Alt} user_{UserNumber}">{Label}</dt>
+                <cite class="label {Alt} user_{UserNumber}">{Label}</cite>
               {/block:Label}
-            <dd class="{Alt} user_{UserNumber}">
-              {Line}
-            </dd>
+              <span class="{Alt} user_{UserNumber}">
+                {Line}
+              </span>
+            </li>
             {/block:Lines}
           </dl>
         {/block:Chat}

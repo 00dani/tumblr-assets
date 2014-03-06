@@ -211,22 +211,25 @@ li.post
         content "link: "
   &.chat
     padding-top 0.5em
-    ul
+    ol
       list-style-type none
+      display table
       margin-left 0
       padding-left 0
       li
+        display table-row
         margin-top 0.5em
         &:first
           margin-top 0
-    dt
-      float left
-      width 8em
-    dd
-      margin-left 8.5em
-      margin-bottom 0.5em
+        > cite
+          display table-cell
+          text-align right
+        > span
+          margin-left 1em
+
     .label
       font-weight bold
+      font-style normal
   &.audio
     padding-top 0.5em
 

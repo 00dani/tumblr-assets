@@ -91,9 +91,9 @@
         {/block:Text}
 
         {block:Photo}
-          <a class="photo" href="{LinkURL}">
+          {LinkOpenTag}
             <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
-          </a>
+          {LinkCloseTag}
           {block:Caption}
             <div class="caption">{Caption}</div>
           {/block:Caption}

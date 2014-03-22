@@ -3,8 +3,9 @@ $ = require 'Extended-Tumblr-Photoset'
 $ ->
   ps = $ 'li.photoset'
   ps.find '.photo-slideshow'
+    .css display: 'block'
     .pxuPhotoset rounded: false
   , ->
-    ($ @).css display: 'block'
+    # Once the responsive photoset loads, hide the nonresponsive one
     ps.find '.html_photoset'
       .remove()

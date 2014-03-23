@@ -176,12 +176,15 @@ p#description
 
 li.post
   display flex
+  flex-wrap wrap
   line-height 1.3em
   padding 0em 2em (2em - cursorline_thickness) 2em
+  font-size 0.9em
 
   .content
     flex 1
-    font-size 0.9em
+  aside#notes
+    width 100%
     ol.notes
       @extends $meta_list
       padding-left 0

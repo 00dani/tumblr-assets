@@ -74,11 +74,22 @@
           {/block:SubmissionsEnabled}
           <li><a href="{RSS}">{lang:RSS}</a></li>
           <li><a href="/archive">{lang:Archive}</a></li>
+          <li>
+            <form action="/search" method="get" role="search">
+              <input type="text" name="q" value="{SearchQuery}" />
+              <input type="submit" value="Search" />
+            </form>
+          </li>
         </ul>
       </div>
     </header>
 
     <main><ol id="posts">
+      {block:NoSearchResults}
+      <li class="post no-results">
+        <p>No posts found matching "{SearchQuery}".</p>
+      </li>
+      {/block:NoSearchResults}
       {block:Posts}
       <li class="post {PostType} {block:Photoset}photoset{/block:Photoset}">
 

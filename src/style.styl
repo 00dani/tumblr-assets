@@ -136,14 +136,12 @@ blockquote
   margin-right 0em
   &.long, &.long blockquote
     border-left-width 0.5em
-  &.peep_0, &.peep_4, &.peep_8
-    border-left-color lighten(cursorline_bg, 20%)
-  &.peep_1, &.peep_5, &.peep_9
-    border-left-color darken(cursorline_bg, 20%)
-  &.peep_2, &.peep_6, &.peep_10
-    border-left-color lighten(cursorline_bg, 40%)
-  &.peep_3, &.peep_7, &.peep_11
-    border-left-color lighten(cursorline_bg, 60%)
+  peeps = ( #E45C5C #FC6 #D7E972 #76E2C2 #5DC6CD #BE7CE4 )
+  for color, i in peeps
+    &.peep_{i}
+    &.peep_{i + length(peeps)}
+    &.peep_{i + 2*length(peeps)}
+      border-left-color color
 
 code, pre
   background-color content_bg

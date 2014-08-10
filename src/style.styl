@@ -137,11 +137,10 @@ blockquote
   &.long, &.long blockquote
     border-left-width 0.5em
   peeps = ( #E45C5C #FC6 #D7E972 #76E2C2 #5DC6CD #BE7CE4 )
-  for color, i in peeps
-    &.peep_{i}
-    &.peep_{i + length(peeps)}
-    &.peep_{i + 2*length(peeps)}
-      border-left-color color
+  for n in 0..10
+    for color, i in peeps
+      &.peep_{i + n*length(peeps)}
+        border-left-color color
 
 code, pre
   background-color content_bg

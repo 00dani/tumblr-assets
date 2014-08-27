@@ -155,9 +155,7 @@
           <ol class="chat">
             {block:Lines}
             <li>
-              {block:Label}
-                <cite class="label {Alt} user_{UserNumber}">{Label}</cite>
-              {/block:Label}
+              <cite class="label {Alt} user_{UserNumber}">{block:Label}{Label}{/block:Label}</cite>
               <span class="{Alt} user_{UserNumber}">
                 {Line}
               </span>

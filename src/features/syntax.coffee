@@ -12,4 +12,4 @@ $.getScript prettify, -> $ ->
       if m = lang.exec lines[0]
         $e.addClass "lang-#{m[1]}"
         $e.text lines[1..].join '\n'
-  prettyPrint()
+  prettyPrint?()

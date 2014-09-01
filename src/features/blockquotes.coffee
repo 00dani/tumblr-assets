@@ -12,7 +12,7 @@ $ ->
     .filter ->
       $ @
         .find 'blockquote'
-        .length > 5
+        .length >= 5
     .addClass 'long'
     .each addPeepClass
     .find 'blockquote'

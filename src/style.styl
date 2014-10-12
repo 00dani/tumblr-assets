@@ -250,6 +250,7 @@ li.post
 
   &.quote blockquote.quote
   &.answer blockquote.question
+  &.answer blockquote.answer
     display flex
     border none
     margin 0
@@ -273,8 +274,10 @@ li.post
         content " – "
 
   &.answer blockquote.question
+  &.answer blockquote.answer
     flex-direction row
     align-items center
+    margin-bottom 1em
     h1
       flex 1
       arrow 15px, cursorline_bg

@@ -183,7 +183,13 @@
             <h1>{Question}</h1>
             <footer><p>{Asker}</p> <img src="{AskerPortraitURL-64}" alt="The question asker's avatar" /></footer>
           </blockquote>
-          {Answer}
+          {block:Answerer}
+          <blockquote class="answer">
+            <h1>{Answer}</h1>
+            <footer><p>{Answerer}</p> <img src="{AnswererPortraitURL-64}" alt="The question answerer's avatar" /></footer>
+          </blockquote>
+          {/block:Answerer}
+          {Replies}
         {/block:Answer}
         </article>
 

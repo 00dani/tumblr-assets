@@ -21,9 +21,13 @@ module.exports = (grunt) ->
     stylus: style:
       src: ['src/style.styl']
       dest: 'dist/style.css'
-    includes: theme:
-      src: ['src/theme.html']
-      dest: 'dist/theme.html'
+    includes:
+      theme:
+        src: ['src/theme.html']
+        dest: 'dist/theme.html'
+      redirect:
+        src: ['src/redirect.html']
+        dest: 'dist/redirect.html'
       options: includePath: '.'
     clean: theme:
       src: ['dist', 'distgz']
@@ -32,6 +36,9 @@ module.exports = (grunt) ->
       theme:
         files: ['src/theme.html']
         tasks: 'includes:theme'
+      redirect:
+        files: ['src/redirect.html', 'src/theme.html']
+        tasks: 'includes:redirect'
       style:
         files: ['src/style.styl']
         tasks: 'stylus:style'

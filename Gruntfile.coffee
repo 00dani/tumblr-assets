@@ -1,5 +1,4 @@
 module.exports = (grunt) ->
-  grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-contrib-stylus'
   grunt.loadNpmTasks 'grunt-contrib-watch'
 
@@ -36,8 +35,6 @@ module.exports = (grunt) ->
         src: ['src/redirect.html']
         dest: 'dist/redirect.html'
       options: includePath: '.'
-    clean: theme:
-      src: ['dist']
 
     contrib_watch:
       theme:

@@ -1,26 +1,33 @@
 module.exports = (grunt) ->
-  grunt.loadNpmTasks 'compilist'
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-stylus'
   grunt.loadNpmTasks 'grunt-contrib-watch'
+
+  grunt.loadNpmTasks 'grunt-browserify'
+  grunt.loadNpmTasks 'grunt-exorcise'
   grunt.loadNpmTasks 'grunt-includes'
 
   grunt.renameTask 'watch', 'contrib_watch'
 
   grunt.initConfig
-    compilist: app:
-      src: ['src/app.coffee']
-      dest: 'dist/app.js'
-    copy: publish:
-      expand: true
-      cwd: 'dist/'
-      src: ['*']
-      dest: "#{process.env.HOME}/gopsychonauts@gmail.com/tumblr/"
+    browserify:
+      options:
+        transform: ['coffeeify', 'cssify']
+        browserifyOptions:
+          debug: true
+          extensions: ['.coffee']
+      app: files: 'dist/app.js': 'src/app.coffee'
+      watchApp:
+        files: 'dist/app.js': 'src/app.coffee'
+        options: watch: true
+    exorcise:
+      app: files: 'dist/app.js.map': ['dist/app.js']
 
     stylus: style:
       src: ['src/style.styl']
       dest: 'dist/style.css'
+
     includes:
       theme:
         src: ['src/theme.html']
@@ -30,7 +37,7 @@ module.exports = (grunt) ->
         dest: 'dist/redirect.html'
       options: includePath: '.'
     clean: theme:
-      src: ['dist', 'distgz']
+      src: ['dist']
 
     contrib_watch:
       theme:
@@ -42,13 +49,10 @@ module.exports = (grunt) ->
       style:
         files: ['src/style.styl']
         tasks: 'stylus:style'
-      dist:
-        files: ['dist/*']
-        tasks: 'copy'
 
-  grunt.registerTask 'theme', ['stylus:style', 'includes:theme']
+  grunt.registerTask 'theme', ['stylus:style', 'includes']
 
-  grunt.registerTask 'watch', ['compilist:app', 'contrib_watch']
-  grunt.registerTask 'publish', ['theme', 'compilist:app', 'copy']
+  grunt.registerTask 'watch', ['browserify:watchApp', 'contrib_watch']
+  grunt.registerTask 'publish', ['theme', 'browserify:app', 'exorcise:app']
 
   grunt.registerTask 'default', ['theme']

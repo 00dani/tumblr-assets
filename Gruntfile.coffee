@@ -1,6 +1,5 @@
 module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-clean'
-  grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-stylus'
   grunt.loadNpmTasks 'grunt-contrib-watch'
 
@@ -21,6 +20,7 @@ module.exports = (grunt) ->
       watchApp:
         files: 'dist/app.js': 'src/app.coffee'
         options: watch: true
+
     exorcise:
       app: files: 'dist/app.js.map': ['dist/app.js']
 

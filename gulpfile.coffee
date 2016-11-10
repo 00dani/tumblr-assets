@@ -25,6 +25,8 @@ bundle = ->
     .pipe source 'app.js'
     .pipe buffer()
     .pipe $.sourcemaps.init loadMaps: true
+    .pipe $.uglify()
+    .on 'error', $.util.log
     .pipe $.sourcemaps.write './'
     .pipe gulp.dest 'dist/'
 
@@ -43,6 +45,7 @@ gulp.task 'style', ->
     .pipe $.sourcemaps.write './'
     .pipe gulp.dest 'dist/'
 
+gulp.task 'default', ['theme', 'style', 'app']
 gulp.task 'watch', ->
   gulp.watch 'src/*.html', ['theme']
   gulp.watch 'src/*.styl', ['style']

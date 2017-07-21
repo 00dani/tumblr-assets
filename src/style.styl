@@ -13,10 +13,10 @@ cursorline_thickness = 1.3em
 
 breakpoints = 48em 35em
 
-main_font = "Helvetica Neue", "Helvetica", sans-serif
+main_font = "Avenir Next", Futura, "Century Gothic", AppleGothic, Corbel, "Myriad Pro", "Lucida Grande", "Trebuchet Ms", sans-serif
 
 meta_fg = #CD8B00
-meta_font = "Inconsolata", "Monaco", "Anonymous Pro", "Andale Mono", monospace
+meta_font = "Monoid", "Inconsolata", "Monaco", "Anonymous Pro", "Andale Mono", monospace
 
 cursorline(side)
   border-{side} cursorline_thickness solid cursorline_bg
@@ -116,7 +116,7 @@ $meta_list
     prefix "# "
     color meta_fg
     font-family meta_font
-    font-size 0.8em
+    font-size 0.75em
     margin-bottom 0.5em
     line-height 1.5em
     a
@@ -155,17 +155,19 @@ code, pre
 h1
   font-family meta_font
   font-size 24pt
-  margin-bottom -10px
+  margin-bottom 0
   padding-bottom 0
   a
     text-decoration none !important
 
 .meta
   font-family meta_font
+  font-size 0.8em
   list-style-type none
   padding 0
   margin 0
   align-self center
+  text-align right
   li
     display inline
     &:not(:first-child)
@@ -175,6 +177,7 @@ p#description
   prefix "# "
   color meta_fg
   font-family meta_font
+  font-size 0.9em
 
 li.post
   display flex

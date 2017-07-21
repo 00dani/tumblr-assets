@@ -70,12 +70,12 @@
           {block:SubmissionsEnabled}
             <li><a href="/submit">{SubmitLabel}</a></li>
           {/block:SubmissionsEnabled}
-          <li><a href="{RSS}">{lang:RSS}</a></li>
-          <li><a href="/archive">{lang:Archive}</a></li>
+          <li><a class="lower" href="{RSS}">{lang:RSS}</a></li>
+          <li><a class="lower" href="/archive">{lang:Archive}</a></li>
           <li>
             <form action="/search" method="get" role="search">
               <input type="text" name="q" value="{SearchQuery}" />
-              <input type="submit" value="Search" />
+              <input class="lower" type="submit" value="{lang:Search}" />
             </form>
           </li>
         </ul>
@@ -85,7 +85,7 @@
     <main><ol id="posts">
       {block:NoSearchResults}
       <li class="post no-results">
-        <p>No posts found matching "{SearchQuery}".</p>
+        <p>{lang:No posts containing SearchQuery}</p>
       </li>
       {/block:NoSearchResults}
       {block:Posts}
@@ -118,7 +118,7 @@
               </div>
               <div class="icons">
                 <a class="tumblr-box" rel="post-{PostID}" href="{PhotoURL-HighRes}">
-                  <span class="zoom">Zoom</span>
+                  <span class="zoom">{lang:Zoom}</span>
                 </a>
                 <span class="info">Info</span>
               </div>
@@ -204,7 +204,7 @@
 
           {block:ContentSource}
           <li class="source">
-            source = <a href="{SourceURL}">{SourceTitle}</a>
+            <span class="lower">{lang:Source}</span> = <a href="{SourceURL}">{SourceTitle}</a>
           </li>
           {/block:ContentSource}
 
@@ -216,7 +216,7 @@
 
           {block:NoteCount}
           <li class="notes">
-            notes = <a href="{Permalink}#notes">{NoteCount}</a>
+            <span class="lower">{lang:Notes}</span> = <a href="{Permalink}#notes">{NoteCount}</a>
           </li>
           {/block:NoteCount}
 
@@ -229,7 +229,7 @@
             </li>
           {/block:Date}
 
-          <li class="permalink"><a href="{Permalink}">permalink</a> | <a href="{ReblogURL}">reblog</a></li>
+          <li class="permalink"><a class="lower" href="{Permalink}">{lang:Permalink}</a> | <a href="{ReblogURL}">reblog</a></li>
         </ul>
 
         {block:PostNotes}<aside id="notes">
@@ -241,31 +241,31 @@
 
     <footer>
       <p id="attribution">
-        Powered by <a href="//tumblr.com/">Tumblr</a>; based off a theme by <a href="//calcandcoffee.tumblr.com/">Adam Lloyd</a> with heavy modifications.
+        {lang:Powered by Tumblr 2}
       </p>
 
       <ul class="meta">
         {block:Pagination}
           {block:PreviousPage}
-            <li><a href="{PreviousPage}">←&nbsp;Previous</a></li>
+            <li><a href="{PreviousPage}">←&nbsp;{lang:Previous}</a></li>
           {/block:PreviousPage}
         {/block:Pagination}
         {block:PermalinkPagination}
           {block:PreviousPost}
-            <li><a href="{PreviousPost}">←&nbsp;Previous</a></li>
+            <li><a href="{PreviousPost}">←&nbsp;{lang:Previous}</a></li>
           {/block:PreviousPost}
         {/block:PermalinkPagination}
 
-        <li><a href="/archive">Archive</a></li>
+        <li><a href="/archive">{lang:Archive}</a></li>
 
         {block:Pagination}
           {block:NextPage}
-            <li><a href="{NextPage}">Next&nbsp;→</a></li>
+            <li><a href="{NextPage}">{lang:Next}&nbsp;→</a></li>
           {/block:NextPage}
         {/block:Pagination}
         {block:PermalinkPagination}
           {block:NextPost}
-            <li><a href="{NextPost}">Next&nbsp;→</a></li>
+            <li><a href="{NextPost}">{lang:Next}&nbsp;→</a></li>
           {/block:NextPost}
         {/block:PermalinkPagination}
       </ul>

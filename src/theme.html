@@ -194,11 +194,13 @@
         <ul class="postextras">
           {block:HasTags}
           <li class="tags">
-            tags = <ul>{block:Tags}
+            tags = <ul>
+              {block:Tags}
               <li>
                 <a href="{TagURL}" class="tag">{Tag}</a><span class="invisible">,</span>
               </li>
-            {/block:Tags}</ul>
+              {/block:Tags}
+            </ul>
           </li>
           {/block:HasTags}
 

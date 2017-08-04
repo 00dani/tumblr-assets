@@ -78,7 +78,7 @@ body > header
 
 body > main
   margin 2em auto
-  width 70%
+  width 80%
   min-width breakpoints[0]
   flex 1
   display flex
@@ -99,7 +99,6 @@ body > footer
   justify-content space-between
   p#attribution
     font-size 0.7em
-    min-width 10em
 
 a
   color link_fg
@@ -183,13 +182,17 @@ p#description
   margin-right 1em
   color meta_fg
   font-family meta_font
-  font-size 0.9em
+
+li p
+  &:first-child
+    margin-top 0
+  &:last-child
+    margin-bottom 0
 
 li.post
   display flex
   flex-wrap wrap
   padding 0em 2em (2em - cursorline_thickness) 2em
-  font-size 0.9em
 
   .content
     flex 1

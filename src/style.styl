@@ -230,8 +230,10 @@ li.post
       padding-left 0
       .avatar_frame
         margin-right 5px
-  .postextras
+  .postextras > ul
     @extends $meta_list
+    position sticky
+    top cursorline_thickness
     +at(md)
       width 12em
     padding 0

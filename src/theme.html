@@ -191,14 +191,12 @@
         {/block:Answer}
         </article>
 
-        <ul class="postextras">
+        <div class="postextras"><ul>
           {block:HasTags}
           <li class="tags">
             tags = <ul>
               {block:Tags}
-              <li>
-                <a href="{TagURL}" class="tag">{Tag}</a><span class="invisible">,</span>
-              </li>
+              <li><a href="{TagURL}" class="tag">{Tag}</a><span class="invisible">,</span> </li>
               {/block:Tags}
             </ul>
           </li>
@@ -232,7 +230,7 @@
           {/block:Date}
 
           <li class="permalink"><a class="lower" href="{Permalink}">{lang:Permalink}</a> | <a href="{ReblogURL}">reblog</a></li>
-        </ul>
+        </ul></div>
 
         {block:PostNotes}<aside id="notes">
           {PostNotes}

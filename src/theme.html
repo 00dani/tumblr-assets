@@ -80,12 +80,12 @@
       {block:Posts}
       <li class="h-entry post {PostType} {block:Photoset}photoset{/block:Photoset}">
 
-        <article class="e-content content">
+        <article class="content">
         {block:Text}
           {block:Title}
             <h3><a class="p-name" href="{Permalink}">{Title}</a></h3>
           {/block:Title}
-          {Body}
+          <div class="e-content">{Body}</div>
         {/block:Text}
 
         {block:Photo}
@@ -93,7 +93,7 @@
             <img class="u-photo" src="{PhotoURL-500}" alt="{PhotoAlt}"/>
           {LinkCloseTag}
           {block:Caption}
-            <div class="caption">{Caption}</div>
+            <div class="e-content caption">{Caption}</div>
           {/block:Caption}
         {/block:Photo}
 
@@ -115,7 +115,7 @@
             {/block:Photos}
           </div><!-- close SLIDESHOW -->
           {block:Caption}
-            <div class="caption">{Caption}</div>
+            <div class="e-content caption">{Caption}</div>
           {/block:Caption}
         {/block:Photoset}
 
@@ -129,9 +129,9 @@
         {/block:Quote}
 
         {block:Link}
-          <h3><a href="{URL}" class="link" {Target}>{Name}</a></h3>
+          <h3><a href="{URL}" class="p-name u-bookmark-of link" {Target}>{Name}</a></h3>
           {block:Description}
-            <div class="description">{Description}</div>
+            <div class="e-content description">{Description}</div>
           {/block:Description}
         {/block:Link}
 
@@ -139,7 +139,7 @@
           {block:Title}
             <h3><a class="p-name" href="{Permalink}">{Title}</a></h3>
           {/block:Title}
-          <ol class="chat">
+          <ol class="chat e-content">
             {block:Lines}
             <li>
               <cite class="label {Alt} user_{UserNumber}">{block:Label}{Label}{/block:Label}</cite>
@@ -154,14 +154,14 @@
         {block:Video}
           {Video-400}
           {block:Caption}
-            <div class="caption">{Caption}</div>
+            <div class="e-content caption">{Caption}</div>
           {/block:Caption}
         {/block:Video}
 
         {block:Audio}
           {AudioPlayerBlack}
           {block:Caption}
-            <div class="caption">{Caption}</div>
+            <div class="e-content caption">{Caption}</div>
           {/block:Caption}
         {/block:Audio}
 

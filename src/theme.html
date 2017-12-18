@@ -15,24 +15,6 @@
     <link rel="micropub" href="https://silo.pub/micropub">
     <!-- End Micropub configuration -->
 
-    {block:Pagination}
-      {block:PreviousPage}
-        <link href="{PreviousPage}" rel="prev" />
-      {/block:PreviousPage}
-      {block:NextPage}
-        <link href="{NextPage}" rel="next" />
-      {/block:NextPage}
-    {/block:Pagination}
-
-    {block:PermalinkPagination}
-      {block:PreviousPost}
-      <link href="{PreviousPost}" rel="prev" />
-      {/block:PreviousPost}
-      {block:NextPost}
-      <link href="{NextPost}" rel="next" />
-      {/block:NextPost}
-    {/block:PermalinkPagination}
-
     <script src="//tumblr-assets.00dani.id.au/app.js" type="text/javascript"></script>
     <link href="//tumblr-assets.00dani.id.au/style.css" rel="stylesheet" type='text/css' />
     <style type="text/css">
@@ -96,19 +78,19 @@
       </li>
       {/block:NoSearchResults}
       {block:Posts}
-      <li class="post {PostType} {block:Photoset}photoset{/block:Photoset}">
+      <li class="h-entry post {PostType} {block:Photoset}photoset{/block:Photoset}">
 
-        <article class="content">
+        <article class="e-content content">
         {block:Text}
           {block:Title}
-            <h3><a href="{Permalink}">{Title}</a></h3>
+            <h3><a class="p-name" href="{Permalink}">{Title}</a></h3>
           {/block:Title}
           {Body}
         {/block:Text}
 
         {block:Photo}
           {LinkOpenTag}
-            <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+            <img class="u-photo" src="{PhotoURL-500}" alt="{PhotoAlt}"/>
           {LinkCloseTag}
           {block:Caption}
             <div class="caption">{Caption}</div>
@@ -155,7 +137,7 @@
 
         {block:Chat}
           {block:Title}
-            <h3><a href="{Permalink}">{Title}</a></h3>
+            <h3><a class="p-name" href="{Permalink}">{Title}</a></h3>
           {/block:Title}
           <ol class="chat">
             {block:Lines}
@@ -203,7 +185,7 @@
           <li class="tags">
             tags = <ul>
               {block:Tags}
-              <li><a href="{TagURL}" class="tag">{Tag}</a><span class="invisible">,</span> </li>
+              <li><a href="{TagURL}" class="p-category tag">{Tag}</a><span class="invisible">,</span> </li>
               {/block:Tags}
             </ul>
           </li>
@@ -217,7 +199,7 @@
 
           {block:RebloggedFrom}
           <li class="from">
-            from = <a href="{ReblogParentURL}">{ReblogParentName}</a>
+            from = <a class="u-repost-of" href="{ReblogParentURL}">{ReblogParentName}</a>
           </li>
           {/block:RebloggedFrom}
 
@@ -229,14 +211,14 @@
 
           {block:Date}
             <li class="date">
-              date = {Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} {24HourWithZero}:{Minutes}:{Seconds}
+              date = <time class="dt-published" datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}T{24HourWithZero}:{Minutes}:{Seconds}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} {24HourWithZero}:{Minutes}</time>
             </li>
             <li class="ago">
               ago = {TimeAgo}
             </li>
           {/block:Date}
 
-          <li class="permalink"><a class="lower" href="{Permalink}">{lang:Permalink}</a> | <a href="{ReblogURL}">reblog</a></li>
+          <li class="permalink"><a class="lower u-url u-uid" href="{Permalink}">{lang:Permalink}</a> | <a href="{ReblogURL}">reblog</a></li>
         </ul></div>
 
         {block:PostNotes}<aside id="notes">
@@ -254,12 +236,12 @@
       <ul class="meta">
         {block:Pagination}
           {block:PreviousPage}
-            <li><a href="{PreviousPage}">←&nbsp;{lang:Previous}</a></li>
+            <li><a rel="prev" href="{PreviousPage}">←&nbsp;{lang:Previous}</a></li>
           {/block:PreviousPage}
         {/block:Pagination}
         {block:PermalinkPagination}
           {block:PreviousPost}
-            <li><a href="{PreviousPost}">←&nbsp;{lang:Previous}</a></li>
+            <li><a rel="prev" href="{PreviousPost}">←&nbsp;{lang:Previous}</a></li>
           {/block:PreviousPost}
         {/block:PermalinkPagination}
 
@@ -267,12 +249,12 @@
 
         {block:Pagination}
           {block:NextPage}
-            <li><a href="{NextPage}">{lang:Next}&nbsp;→</a></li>
+            <li><a rel="prev" href="{NextPage}">{lang:Next}&nbsp;→</a></li>
           {/block:NextPage}
         {/block:Pagination}
         {block:PermalinkPagination}
           {block:NextPost}
-            <li><a href="{NextPost}">{lang:Next}&nbsp;→</a></li>
+            <li><a rel="prev" href="{NextPost}">{lang:Next}&nbsp;→</a></li>
           {/block:NextPost}
         {/block:PermalinkPagination}
       </ul>

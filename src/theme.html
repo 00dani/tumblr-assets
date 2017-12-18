@@ -7,6 +7,13 @@
     <link rel="alternate" type="application/rss+xml" href="{RSS}">
     <meta name="viewport" content="width=device-width" />
     {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+    <link rel="me" href="https://00dani.me">
+
+    <!-- Micropub via silo.pub -->
+    <link rel="authorization_endpoint" href="https://silo.pub/indieauth">
+    <link rel="token_endpoint" href="https://silo.pub/token">
+    <link rel="micropub" href="https://silo.pub/micropub">
+    <!-- End Micropub configuration -->
 
     {block:Pagination}
       {block:PreviousPage}

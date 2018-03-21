@@ -23,6 +23,7 @@ app = ->
     .pipe source 'app.js'
     .pipe buffer()
     .pipe $.sourcemaps.init loadMaps: true
+    .pipe $.babel compact: false, presets: ['env']
     .pipe $.uglify()
     .pipe $.sourcemaps.write './'
     .pipe gulp.dest 'dist/'

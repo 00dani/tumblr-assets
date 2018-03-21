@@ -57,7 +57,7 @@ gulp.task monoid
 
 gulp.task 'default', gulp.parallel monoid, theme, style, app
 gulp.task 'watch', ->
-  gulp.watch 'src/*.html', ['theme']
-  gulp.watch 'src/*.styl', ['style']
+  gulp.watch 'src/*.html', theme
+  gulp.watch 'src/*.styl', style
   b.plugin 'watchify'
   app()

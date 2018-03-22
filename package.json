@@ -1,4 +1,7 @@
 {
+  "repository": "https://github.com/00dani/tumblr-assets",
+  "description": "the template, styles, and scripts for my tumblr theme",
+  "license": "MIT",
   "dependencies": {
     "Extended-Tumblr-Photoset": "git+https://github.com/00dani/Extended-Tumblr-Photoset.git#browserify",
     "babel-core": "^6.26.0",

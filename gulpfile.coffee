@@ -8,6 +8,9 @@ log = require 'gulplog'
 nib = require 'nib'
 source = require 'vinyl-source-stream'
 
+hash = (require 'git-rev-sync').short()
+dist = "dist/#{hash}/"
+
 browserifyOpts = {
   debug: true
   entries: ['src/app.coffee']
@@ -26,17 +29,17 @@ app = ->
     .pipe $.babel compact: false, presets: ['env']
     .pipe $.uglify()
     .pipe $.sourcemaps.write './'
-    .pipe gulp.dest 'dist/'
+    .pipe gulp.dest dist
 
 b.on 'update', app
 gulp.task app
 
 theme = ->
-  context = {}
+  context = {hash}
   gulp.src 'src/*.hbs'
     .pipe $.staticHandlebars context, partials: gulp.src 'src/*.hbs'
     .pipe $.rename extname: '.html'
-    .pipe gulp.dest 'dist/'
+    .pipe gulp.dest dist
 gulp.task theme
 
 style = ->
@@ -44,7 +47,7 @@ style = ->
     .pipe $.sourcemaps.init loadMaps: true
     .pipe $.stylus use: nib(), compress: true
     .pipe $.sourcemaps.write './'
-    .pipe gulp.dest 'dist/'
+    .pipe gulp.dest dist
 gulp.task style
 
 monoid = ->
@@ -54,7 +57,7 @@ monoid = ->
     .pipe $.ttf2eot clone: true
     .pipe $.ttf2woff clone: true
     .pipe $.ttf2woff2 clone: true
-    .pipe gulp.dest 'dist/fonts/'
+    .pipe gulp.dest dist + '/fonts/'
 gulp.task monoid
 
 gulp.task 'default', gulp.parallel monoid, theme, style, app

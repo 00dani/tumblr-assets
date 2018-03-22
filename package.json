@@ -6,6 +6,7 @@
     "coffeeify": "^3.0.1",
     "coffeescript": "^2.2.3",
     "cssify": "^1.0.3",
+    "git-rev-sync": "^1.10.0",
     "gulp": "^4.0.0",
     "gulp-babel": "^7.0.1",
     "gulp-decompress": "^2.0.2",

@@ -1,4 +1,4 @@
-$ = require 'jquery'
+import $ from 'jquery'
 
 peeps = []
 addPeepClass = (i, e) ->

@@ -3,35 +3,24 @@
 gulp = require 'gulp'
 $ = do require 'gulp-load-plugins'
 
-buffer = require 'vinyl-buffer'
-log = require 'gulplog'
 nib = require 'nib'
-source = require 'vinyl-source-stream'
+webpack = require 'webpack'
+webpackStream = require 'webpack-stream'
 
 hash = (require 'git-rev-sync').short()
 dist = "dist/#{hash}/"
 
-browserifyOpts = {
-  debug: true
-  entries: ['src/app.coffee']
-  extensions: ['.coffee']
-  transform: ['coffeeify', 'cssify']
-}
-b = (require 'browserify') browserifyOpts
-b.on 'log', log.info
-
-app = ->
-  b.bundle()
-    .on 'error', log.error.bind log, 'Browserify Error'
-    .pipe source 'app.js'
-    .pipe buffer()
-    .pipe $.sourcemaps.init loadMaps: true
-    .pipe $.babel compact: false, presets: ['env']
-    .pipe $.uglify()
-    .pipe $.sourcemaps.write './'
+buildApp = (conf) ->
+  gulp.src 'src/app.coffee'
+    .pipe webpackStream conf, webpack
     .pipe gulp.dest dist
 
-b.on 'update', app
+app = -> buildApp require './webpack.config'
+appWatch = ->
+	conf = require './webpack.config'
+	conf.watch = true
+	buildApp conf
+
 gulp.task app
 
 theme = ->
@@ -64,5 +53,5 @@ gulp.task 'default', gulp.parallel monoid, theme, style, app
 gulp.task 'watch', ->
   gulp.watch 'src/*.hbs', theme
   gulp.watch 'src/*.styl', style
-  b.plugin 'watchify'
-  app()
+  gulp.watch './webpack.config.coffee', appWatch
+  appWatch()

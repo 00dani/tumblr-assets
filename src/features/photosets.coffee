@@ -1,4 +1,4 @@
-$ = require 'Extended-Tumblr-Photoset'
+import $ from 'Extended-Tumblr-Photoset'
 
 $ ->
   ps = $ 'li.photoset'

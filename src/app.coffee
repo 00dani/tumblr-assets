@@ -1,4 +1,3 @@
-require './features/blockquotes'
-require './features/jquery'
-require './features/photosets'
-require './features/syntax'
+import './features/blockquotes'
+import './features/photosets'
+import './features/syntax'

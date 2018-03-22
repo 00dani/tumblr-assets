@@ -5,13 +5,13 @@
   "dependencies": {
     "Extended-Tumblr-Photoset": "git+https://github.com/00dani/Extended-Tumblr-Photoset.git#browserify",
     "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
-    "coffeeify": "^3.0.1",
+    "coffee-loader": "^0.9.0",
     "coffeescript": "^2.2.3",
-    "cssify": "^1.0.3",
+    "css-loader": "^0.28.11",
     "git-rev-sync": "^1.10.0",
     "gulp": "^4.0.0",
-    "gulp-babel": "^7.0.1",
     "gulp-decompress": "^2.0.2",
     "gulp-download": "0.0.1",
     "gulp-ignore": "^2.0.2",
@@ -23,12 +23,8 @@
     "gulp-ttf2eot": "^1.1.2",
     "gulp-ttf2woff": "^1.1.1",
     "gulp-ttf2woff2": "^2.0.2",
-    "gulp-uglify": "^3.0.0",
-    "gulplog": "^1.0.0",
-    "jquery": "~3.2.1",
     "nib": "^1.1.2",
-    "vinyl-buffer": "^1.0.1",
-    "vinyl-source-stream": "^2.0.0",
-    "watchify": "^3.11.0"
+    "webpack": "^4.2.0",
+    "webpack-stream": "^4.0.2"
   }
 }

@@ -32,8 +32,10 @@ b.on 'update', app
 gulp.task app
 
 theme = ->
-  gulp.src 'src/*.html'
-    .pipe $.include()
+  context = {}
+  gulp.src 'src/*.hbs'
+    .pipe $.staticHandlebars context, partials: gulp.src 'src/*.hbs'
+    .pipe $.rename extname: '.html'
     .pipe gulp.dest 'dist/'
 gulp.task theme
 
@@ -57,7 +59,7 @@ gulp.task monoid
 
 gulp.task 'default', gulp.parallel monoid, theme, style, app
 gulp.task 'watch', ->
-  gulp.watch 'src/*.html', theme
+  gulp.watch 'src/*.hbs', theme
   gulp.watch 'src/*.styl', style
   b.plugin 'watchify'
   app()

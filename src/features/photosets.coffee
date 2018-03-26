@@ -1,4 +1,4 @@
-import $ from 'Extended-Tumblr-Photoset'
+import $ from 'jquery'
 
 $ ->
   ps = $ 'li.photoset'

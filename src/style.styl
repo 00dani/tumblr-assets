@@ -49,8 +49,6 @@ arrow(arrow-width = 10px, arrow-colour)
     border-left-color arrow-colour
 
 *
-  box-sizing border-box
-  word-wrap break-word
   max-width 100%
   min-width 0
 
@@ -61,8 +59,6 @@ body
   background-color page_bg
   color page_fg
   font-family main_font
-  line-height 1.5
-  margin 0
 
   display flex
   min-height 100vh
@@ -75,15 +71,13 @@ $box
   padding-right 2em
   background content_bg
 
-body > header
+body > nav.navbar-dark
   @extends $box
-  padding-bottom 0.5em
-  > div
-    display flex
-    flex-direction column
-    +at(md)
-      flex-direction row
-    justify-content space-between
+  .navbar-brand
+    font-family meta_font
+    color meta_fg
+  .navbar-text
+    color meta_fg
 
 body > main
   margin 2em auto
@@ -104,17 +98,6 @@ body > main
 
 body > footer
   @extends $box
-  display flex
-  padding-top 1em
-  padding-bottom 1em
-  align-items center
-  justify-content space-between
-  p#attribution
-    font-size 0.7em
-    display none
-    margin 0
-    +at(md)
-      display block
 
 a
   color link_fg
@@ -137,6 +120,13 @@ $meta_list
     a
       color meta_fg
       text-decoration none
+
+.navbar-dark .nav-item .nav-link
+  color meta_fg
+  font-family meta_font
+  &:hover
+    color meta_fg
+    background-color link_bg
 
 .tags ul
   list-style-type none
@@ -188,17 +178,6 @@ h1
     display inline
     &:not(:first-child)
       prefix " / "
-
-p#description
-  prefix "# "
-  position relative
-  &:before
-    position absolute
-    left -1.5em
-
-  margin-right 1em
-  color meta_fg
-  font-family meta_font
 
 li > p
   &:first-child
@@ -340,20 +319,16 @@ ul.twocol
   column-count 2
 
 form[role="search"]
-  display inline-flex
-  input[type="text"]
+  .form-control
+    background-color lighten(page_bg, 10%)
     border none
-    border-radius 5px 0 0 5px
-    padding 5px
-    background-color lighten(page_bg, 5%)
     color page_fg
-  input[type="submit"]
-    @extends a
+  button[type="submit"]
     border none
-    border-radius 0 5px 5px 0
-    font-family meta_font
-    font-size inherit
+    color page_fg
     background-color lighten(content_bg, 10%)
+    &:hover
+      background-color lighten(content_bg, 20%)
 
 .invisible
   display inline-block
@@ -361,5 +336,6 @@ form[role="search"]
   height 0
   opacity 0
 
-.lower
-  text-transform lowercase
+.photo-slideshow
+  visibility visible
+  display none

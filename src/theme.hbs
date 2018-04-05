@@ -13,7 +13,6 @@
 
     <title>{block:PostSummary}{PostSummary} – {/block:PostSummary}{Title}</title>
     <link rel="shortcut icon" href="{Favicon}">
-    <link rel="alternate" type="application/rss+xml" href="{RSS}">
     {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
     <link rel="me" href="https://00dani.me">
 
@@ -24,45 +23,80 @@
     <!-- End Micropub configuration -->
 
     <link href="https://cdn.00dani.me/tumblr/{{ hash }}/style.css" rel="stylesheet" type='text/css' />
-    <style type="text/css">
-      .photo-slideshow {
-        visibility: visible;
-        display: none;
-      }
-    </style>
+    <style type="text/css">{CustomCSS}</style>
 
+    <script src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" defer crossorigin="anonymous"
+            integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"></script>
   </head>
 
   <body>
-    <header>
-      <h1><a href="/">{Title}</a></h1>
+    <nav class="navbar navbar-dark navbar-expand-lg">
+      <a class="navbar-brand" rel="home" href="{BlogURL}">{Title}</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      <div>
+      <div id="navbarMain" class="collapse navbar-collapse">
         {block:Description}
-          <p id="description">{Description}</p>
+        <span class="navbar-text d-md-none">{Description}</span>
         {/block:Description}
 
-        <ul class="meta">
+        <ul class="navbar-nav mr-auto">
           {block:HasPages}{block:Pages}
-            <li><a href="{URL}">{Label}</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="{URL}">
+                <i class="fas fa-fw fa-file-alt" aria-hidden="true"></i>
+                {Label}
+              </a>
+            </li>
           {/block:Pages}{/block:HasPages}
+
           {block:AskEnabled}
-            <li><a href="/ask">{AskLabel}</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="/ask">
+                <i class="fas fa-fw fa-question-circle" aria-hidden="true"></i>
+                {AskLabel}
+              </a>
+            </li>
           {/block:AskEnabled}
+
           {block:SubmissionsEnabled}
-            <li><a href="/submit">{SubmitLabel}</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="/submit">
+                <i class="fas fa-fw fa-envelope" aria-hidden="true"></i>
+                {SubmitLabel}
+              </a>
+            </li>
           {/block:SubmissionsEnabled}
-          <li><a class="lower" href="{RSS}">{lang:RSS}</a></li>
-          <li><a class="lower" href="/archive">{lang:Archive}</a></li>
-          <li>
-            <form action="/search" method="get" role="search">
-              <input type="text" name="q" value="{SearchQuery}" />
-              <input class="lower" type="submit" value="{lang:Search}" />
-            </form>
+
+          <li class="nav-item">
+            <a class="nav-link text-lowercase" rel="alternate" type="application/rss+xml" href="{RSS}">
+              <i class="fas fa-fw fa-rss" aria-hidden="true"></i>
+              {lang:RSS}
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link text-lowercase" href="/archive">
+              <i class="fas fa-fw fa-archive" aria-hidden="true"></i>
+              {lang:Archive}
+            </a>
           </li>
         </ul>
+
+        <form class="form-inline my-2 my-lg-0" action="/search" method="get" role="search">
+          <div class="input-group">
+            <input class="form-control" type="search" name="q" aria-label="{lang:Search}" aria-describedby="submit-search" value="{SearchQuery}">
+            <div class="input-group-append">
+              <button id="submit-search" class="btn btn-info" type="submit">
+                <i class="fas fa-search" aria-hidden="true"></i>
+                <span class="sr-only text-lowercase">{lang:Search}</span>
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
-    </header>
+    </nav>
 
     <main><ol id="posts">
       {block:NoSearchResults}
@@ -96,7 +130,7 @@
             {block:Photos}
             <div class="photo-data">
               <div class="pxu-photo">
-                <img alt="{PhotoAlt}" src="{PhotoURL-500}" width="{PhotoWidth-500}" height="{PhotoHeight-500}" data-highres="{PhotoURL-HighRes}" data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}" class="{block:Exif}exif-yes {/block:Exif}{block:Caption}caption-yes{/block:Caption}" {block:Exif}data-camera="{block:Camera}{Camera}{/block:Camera}" data-iso="{block:ISO}{ISO}{/block:ISO}" data-aperture="{block:Aperture}{Aperture}{/block:Aperture}" data-exposure="{block:Exposure}{Exposure}{/block:Exposure}" data-focal="{block:FocalLength}{FocalLength}{/block:FocalLength}"{/block:Exif} {block:Caption}data-caption="{Caption}"{/block:Caption}>
+                <img class="u-photo" alt="{PhotoAlt}" src="{PhotoURL-500}" width="{PhotoWidth-500}" height="{PhotoHeight-500}" data-highres="{PhotoURL-HighRes}" data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}" class="{block:Exif}exif-yes {/block:Exif}{block:Caption}caption-yes{/block:Caption}" {block:Exif}data-camera="{block:Camera}{Camera}{/block:Camera}" data-iso="{block:ISO}{ISO}{/block:ISO}" data-aperture="{block:Aperture}{Aperture}{/block:Aperture}" data-exposure="{block:Exposure}{Exposure}{/block:Exposure}" data-focal="{block:FocalLength}{FocalLength}{/block:FocalLength}"{/block:Exif} {block:Caption}data-caption="{Caption}"{/block:Caption}>
               </div>
               <div class="icons">
                 <a class="tumblr-box" rel="post-{PostID}" href="{PhotoURL-HighRes}">
@@ -186,7 +220,7 @@
 
           {block:ContentSource}
           <li class="source">
-            <span class="lower">{lang:Source}</span> = <a href="{SourceURL}">{SourceTitle}</a>
+            <span class="text-lowercase">{lang:Source}</span> = <a href="{SourceURL}">{SourceTitle}</a>
           </li>
           {/block:ContentSource}
 
@@ -198,7 +232,7 @@
 
           {block:NoteCount}
           <li class="notes">
-            <span class="lower">{lang:Notes}</span> = <a href="{Permalink}#notes">{NoteCount}</a>
+            <span class="text-lowercase">{lang:Notes}</span> = <a href="{Permalink}#notes">{NoteCount}</a>
           </li>
           {/block:NoteCount}
 
@@ -211,7 +245,7 @@
             </li>
           {/block:Date}
 
-          <li class="permalink"><a class="lower u-url u-uid" href="{Permalink}">{lang:Permalink}</a> | <a href="{ReblogURL}">reblog</a></li>
+          <li class="permalink"><a class="text-lowercase u-url u-uid" href="{Permalink}">{lang:Permalink}</a> | <a href="{ReblogURL}">reblog</a></li>
         </ul></div>
 
         {block:PostNotes}<aside id="notes">
@@ -221,33 +255,60 @@
       {/block:Posts}
     </ol></main>
 
-    <footer class="lower">
-      <p id="attribution">
+    <footer role="nav" class="navbar navbar-expand navbar-dark align-items-center justify-content-center justify-content-md-between text-lowercase">
+      <span class="navbar-text d-none d-md-inline-block">
         {lang:Powered by Tumblr 2}
-      </p>
+      </span>
 
-      <ul class="meta">
+      <ul class="navbar-nav">
         {block:Pagination}
           {block:PreviousPage}
-            <li><a rel="prev" href="{PreviousPage}">←&nbsp;{lang:Previous}</a></li>
+          <li class="nav-item">
+            <a class="nav-link" rel="prev" href="{PreviousPage}">
+              <i class="fas fa-arrow-left" aria-hidden="true"></i>
+              {lang:Previous}
+            </a>
+          </li>
           {/block:PreviousPage}
         {/block:Pagination}
+
         {block:PermalinkPagination}
           {block:PreviousPost}
-            <li><a rel="prev" href="{PreviousPost}">←&nbsp;{lang:Previous}</a></li>
+            <li>
+              <a class="nav-item" rel="prev" href="{PreviousPost}">
+                <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                {lang:Previous}
+              </a>
+            </li>
           {/block:PreviousPost}
         {/block:PermalinkPagination}
 
-        <li><a href="/archive">{lang:Archive}</a></li>
+        <li class="nav-item">
+          <a class="nav-link" href="/archive">
+            <i class="fas fa-archive" aria-hidden="true"></i>
+            {lang:Archive}
+          </a>
+        </li>
 
         {block:Pagination}
           {block:NextPage}
-            <li><a rel="prev" href="{NextPage}">{lang:Next}&nbsp;→</a></li>
+            <li class="nav-item">
+              <a class="nav-link" rel="next" href="{NextPage}">
+                {lang:Next}
+                <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </li>
           {/block:NextPage}
         {/block:Pagination}
+
         {block:PermalinkPagination}
           {block:NextPost}
-            <li><a rel="prev" href="{NextPost}">{lang:Next}&nbsp;→</a></li>
+            <li class="nav-item">
+              <a class="nav-link" rel="next" href="{NextPost}">
+                {lang:Next}
+                <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </li>
           {/block:NextPost}
         {/block:PermalinkPagination}
       </ul>

@@ -117,7 +117,7 @@
 
         {block:Photo}
           {LinkOpenTag}
-            <img class="u-photo" src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+            <img class="u-photo" src="{PhotoURL-HighRes}" alt="{PhotoAlt}" width="{PhotoWidth-HighRes}" height="{PhotoHeight-HighRes}" />
           {LinkCloseTag}
           {block:Caption}
             <div class="e-content caption">{Caption}</div>
@@ -274,8 +274,8 @@
 
         {block:PermalinkPagination}
           {block:PreviousPost}
-            <li>
-              <a class="nav-item" rel="prev" href="{PreviousPost}">
+            <li class="nav-item">
+              <a class="nav-link" rel="prev" href="{PreviousPost}">
                 <i class="fas fa-arrow-left" aria-hidden="true"></i>
                 {lang:Previous}
               </a>

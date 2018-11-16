@@ -24,9 +24,8 @@ appWatch = ->
 gulp.task app
 
 theme = ->
-  context = {hash}
   gulp.src 'src/*.hbs'
-    .pipe $.staticHandlebars context, partials: gulp.src 'src/*.hbs'
+    .pipe $.hb data: {hash}, partials: 'src/*.hbs'
     .pipe $.rename extname: '.html'
     .pipe gulp.dest dist
 gulp.task theme

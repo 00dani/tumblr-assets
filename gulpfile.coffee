@@ -17,9 +17,9 @@ buildApp = (conf) ->
 
 app = -> buildApp require './webpack.config'
 appWatch = ->
-	conf = require './webpack.config'
-	conf.watch = true
-	buildApp conf
+  conf = require './webpack.config'
+  conf.watch = true
+  buildApp conf
 
 gulp.task app
 
